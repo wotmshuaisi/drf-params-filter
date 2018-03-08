@@ -42,6 +42,9 @@ class BaseFilter(object):
             # pass exclude params
             if key in exclude_params:
                 continue
+            # pass null params
+            if not self.query_params.get(key):
+                continue
             self.__filter_field(
                 condition,
                 self.query_params.get(key))
